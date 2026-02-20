@@ -2,6 +2,9 @@
 
 An interactive, browser‑based app to help beginners learn the Arabic script and basic Quranic content. It focuses on practical reading skills with audio support, spaced practice, and gentle progress tracking.
 
+### Live Preview
+You can try out the app live at: [Arabic Learning App](https://siddik-web.github.io/arabic-learning-app/)
+
 ### Features
 - Learn the full Arabic alphabet with details and audio for each letter
 - Practice harakat (short vowels) and how they change letter sounds
