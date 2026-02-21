@@ -1,9 +1,9 @@
-import { speak } from './core/tts.js';
+import { speak, initTTS } from './core/tts.js';
 import { getElement } from './core/utils.js';
 import { ALP } from './data/alphabet.js';
 
 import { showTab } from './modules/ui.js';
-import { renderAl, showDet, markL, toggleFavLetter, curAr } from './modules/alphabet.js';
+import { renderAl, showDet, hideDet, markL, toggleFavLetter, curAr } from './modules/alphabet.js';
 import { setFcM, flip, fcMv, shuffleFc, fcAr, attachSwipeEvents } from './modules/flashcard.js';
 import { setTC, clrC, undo, tNav, tDone } from './modules/tracing.js';
 import { renderHar } from './modules/harakat.js';
@@ -18,6 +18,7 @@ import { chkStreak, checkNewDay, updSbar, resetP, shareProgress } from './module
 window.showTab = showTab;
 window.speak = speak;
 window.showDet = showDet;
+window.hideDet = hideDet;
 window.markL = markL;
 window.toggleFavLetter = toggleFavLetter;
 window.setFcM = setFcM;
@@ -72,7 +73,7 @@ function bootstrap() {
     updSbar();
     attachSwipeEvents();
 
-    window.speechSynthesis.onvoiceschanged = () => window.speechSynthesis.getVoices();
+    initTTS();
 }
 
 document.addEventListener('click', (e) => {
@@ -85,6 +86,7 @@ document.addEventListener('click', (e) => {
     }
 
     if (target.id === 'dlet' || target.id === 'sbtn' || target.id === 'coachSpeak') speak(curAr);
+    if (target.id === 'dclose' || target.id === 'backdrop') hideDet();
     if (target.id === 'lbtn') markL();
     if (target.id === 'fbtn') toggleFavLetter();
     if (target.dataset.coachLetter) {

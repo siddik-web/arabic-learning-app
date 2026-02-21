@@ -111,13 +111,22 @@ export function showDet(i) {
     b.style.opacity = state.LL.has(i) ? '.5' : '1';
 
     getElement('fbtn').textContent = state.FavLetters.has(i) ? '★ পছন্দের তালিকা থেকে সরান' : '★ পছন্দের তালিকায় যুক্ত করুন';
+
     getElement('dpanel').classList.add('on');
+    getElement('backdrop').classList.add('on');
+    document.body.classList.add('modal-open');
 
     renderCoach(i);
 
     document.querySelectorAll('.lcard').forEach((c, j) => c.classList.toggle('sel', j === i));
-    getElement('dpanel').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
     speak(l.ar);
+}
+
+export function hideDet() {
+    getElement('dpanel').classList.remove('on');
+    getElement('backdrop').classList.remove('on');
+    document.body.classList.remove('modal-open');
 }
 
 export function markL() {

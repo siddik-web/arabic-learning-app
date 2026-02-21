@@ -6,27 +6,43 @@ An interactive, browser‑based app to help beginners learn the Arabic script an
 You can try out the app live at: [Arabic Learning App](https://siddik-web.github.io/arabic-learning-app/)
 
 ### Features
-- Learn the full Arabic alphabet with details and audio for each letter
-- Practice harakat (short vowels) and how they change letter sounds
-- Build vocabulary through categorized word lists with favorites
-- Explore short surahs with audio playback
-- Learn and review common duas
-- Tajweed basics and tips for correct pronunciation
-- Flashcards, quizzes, and tracing exercises
-- Daily streak and progress tracking
+- **Arabic Alphabet**: Learn the full 28 letters with details and audio for each.
+- **Harakat**: Practice short vowels and how they change letter sounds.
+- **Vocabulary**: 100+ Quranic words categorized by type (Allah's names, verbs, nouns, etc.) with a favorites system.
+- **Surahs**: Explore short surahs with full audio playback.
+- **Duas**: Daily prayers with audio support and favorites.
+- **Tracing**: Interactive canvas for practicing letter writing with dotted guides.
+- **Quizzes**: Test your knowledge with multiple quiz modes (Letter → Name, Name → Letter, Word → Meaning).
+- **Progress Tracking**: Daily streaks, XP, achievements, and progress visualization.
 
 ### Tech Stack
-- Vanilla HTML, CSS, and JavaScript
-- No build tools or backend; everything runs in the browser
-- Optional use of the browser Speech Synthesis API for text‑to‑speech
+- **Frontend**: Vanilla HTML5, CSS3, and JavaScript (ES Modules).
+- **Audio**: Web Speech API (Text‑to‑Speech) for dynamic pronunciation.
+- **Storage**: Browser `localStorage` for saving progress and favorites.
+- **Offline Support**: Designed to work as a static application.
+
+### Text-to-Speech (TTS) System
+The app uses a robust, custom-built TTS wrapper (`js/core/tts.js`) optimized for Arabic learning:
+- **Auto-Initialization**: Pre-loads voices asynchronously for Chrome/Android compatibility.
+- **Voice Selection**: Automatically prioritizes high-quality Arabic voices across Windows, Android, iOS, and macOS.
+- **Debouncing**: Prevents audio overlapping during rapid user interaction.
+- **Error Handling**: Graceful fallbacks when specific voices are unavailable.
+
+#### Troubleshooting Audio
+If you don't hear any audio, please check the following:
+1. **System Volume**: Ensure your device volume is up and not muted.
+2. **Arabic Voice Data**: Your OS might need Arabic speech data installed:
+   - **Android**: Settings -> Languages & Input -> Text-to-speech output -> Preferred engine (Gear) -> Install voice data -> Arabic.
+   - **Windows**: Settings -> Time & Language -> Speech -> Manage voices -> Add voices -> Arabic.
+   - **Browsers**: Use modern browsers like Chrome, Edge, or Safari for the best experience.
 
 ### Project Structure
-- `index.html` – Main entry point and layout shell
-- `styles/main.css` – Global styling for the app
-- `js/app.js` – App bootstrap, event wiring, and high‑level UI behavior
-- `js/core/` – Core utilities (state, text‑to‑speech, helpers)
-- `js/data/` – Static data: alphabet, harakat, words, duas, surahs, tajweed, tips
-- `js/modules/` – Feature modules (alphabet, tracing, flashcards, quiz, progress, UI, etc.)
+- `index.html` – Main entry point and layout shell.
+- `styles/main.css` – Global styling and responsive UI.
+- `js/app.js` – Central orchestration and event delegation.
+- `js/core/` – Core systems (state management, TTS, utilities).
+- `js/data/` – Content database (alphabet, words, surahs, etc.).
+- `js/modules/` – Feature-specific logic (quiz, tracing, progress).
 
 ### Getting Started
 1. Clone or download this repository.
@@ -34,29 +50,18 @@ You can try out the app live at: [Arabic Learning App](https://siddik-web.github
    ```bash
    cd arabic-learning-app
    ```
-3. Start a simple static server from the project root, for example:
+3. Start a simple static server:
    ```bash
    # Option 1: Python 3
    python -m http.server 8000
-
-   # Option 2: Node (if you have `serve` installed)
-   npx serve .
    ```
-4. In your browser, open:
-   ```text
-   http://localhost:8000/index.html
-   ```
-
-You can also open `index.html` directly in a browser, but using a local server is recommended for consistent behavior with all features.
+4. In your browser, open: `http://localhost:8000`
 
 ### Development Notes
-- JavaScript modules are loaded directly via `<script type="module">` from `index.html`.
-- Most user interactions are handled centrally in `js/app.js` and delegated to modules in `js/modules/`.
-- Text‑to‑speech depends on the voices available in the user's browser/OS.
+- **ES Modules**: JavaScript is structured using native modules.
+- **Event Delegation**: Clicks are handled centrally in `app.js` for performance.
+- **State**: `state.js` handles persistent data across sessions.
 
 ### Contributing
-Improvements and new learning activities are welcome. Some possible directions:
-- Expanding word lists, duas, and surahs
-- Adding more interactive exercises or games
-- Enhancing accessibility and mobile layout
+Improvements and new learning activities are welcome. Feel free to expand the curated data in `js/data/` or enhance the interactive modules.
 

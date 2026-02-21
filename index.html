@@ -1,231 +1,295 @@
 <!DOCTYPE html>
 <html lang="bn" dir="ltr">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>আরবি শিক্ষা উন্নত সংস্করণ</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles/main.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>আরবি শিক্ষা উন্নত সংস্করণ</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles/main.css">
 </head>
+
 <body>
-<div class="toast" id="toast"></div>
-<header>
-<div class="wrap">
-<div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
-<div class="title-ar">تعلم القرآن الكريم</div>
-<div class="title-bn">উন্নত সংস্করণ — কুরআন পড়তে শিখি</div>
-</div>
-</header>
-<div class="wrap">
-<div class="sbar">
-<div class="si">🔥 <span class="sn" id="hstr">0</span> দিনের ধারা</div>
-<div class="si">📖 <span class="sn" id="hlet">0</span>/28 হরফ</div>
-<div class="si">⭐ <span class="sn" id="hxp">0</span> XP</div>
-<div class="si" style="color:var(--tl)" id="dailyGoalDisplay">🎯 0/10</div>
-</div>
-<nav class="ntabs">
-<button class="tb on" data-tab="al">🔤 হরফ</button>
-<button class="tb" data-tab="fc">🔁 ফ্ল্যাশকার্ড</button>
-<button class="tb" data-tab="tr">✍️ লেখা</button>
-<button class="tb" data-tab="ha">🌟 হারাকাত</button>
-<button class="tb" data-tab="wo">📖 শব্দ</button>
-<button class="tb" data-tab="qu">🧠 পরীক্ষা</button>
-<button class="tb" data-tab="tj">🔗 তাজবিদ</button>
-<button class="tb" data-tab="du">🕌 দু'আ</button>
-<button class="tb" data-tab="su">📜 সূরা</button>
-<button class="tb" data-tab="pr">📊 অগ্রগতি</button>
-<button class="tb" data-tab="ti">💡 পরামর্শ</button>
-</nav>
-<div class="pbar"><div class="pfill" id="pf" style="width:5%"></div></div>
+    <div class="toast" id="toast"></div>
+    <div class="backdrop" id="backdrop"></div>
+    <header>
+        <div class="wrap">
+            <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+            <div class="title-ar">تعلم القرآن الكريم</div>
+            <div class="title-bn">উন্নত সংস্করণ — কুরআন পড়তে শিখি</div>
+        </div>
+    </header>
+    <div class="wrap">
+        <div class="sbar">
+            <div class="si">🔥 <span class="sn" id="hstr">0</span> দিনের ধারা</div>
+            <div class="si">📖 <span class="sn" id="hlet">0</span>/28 হরফ</div>
+            <div class="si">⭐ <span class="sn" id="hxp">0</span> XP</div>
+            <div class="si" style="color:var(--tl)" id="dailyGoalDisplay">🎯 0/10</div>
+        </div>
+        <nav class="ntabs">
+            <button class="tb on" data-tab="al">🔤 হরফ</button>
+            <button class="tb" data-tab="fc">🔁 ফ্ল্যাশকার্ড</button>
+            <button class="tb" data-tab="tr">✍️ লেখা</button>
+            <button class="tb" data-tab="ha">🌟 হারাকাত</button>
+            <button class="tb" data-tab="wo">📖 শব্দ</button>
+            <button class="tb" data-tab="qu">🧠 পরীক্ষা</button>
+            <button class="tb" data-tab="tj">🔗 তাজবিদ</button>
+            <button class="tb" data-tab="du">🕌 দু'আ</button>
+            <button class="tb" data-tab="su">📜 সূরা</button>
+            <button class="tb" data-tab="pr">📊 অগ্রগতি</button>
+            <button class="tb" data-tab="ti">💡 পরামর্শ</button>
+        </nav>
+        <div class="pbar">
+            <div class="pfill" id="pf" style="width:5%"></div>
+        </div>
 
-<!-- ALPHABET -->
+        <!-- ALPHABET -->
 
-<div class="sec on" id="s-al">
-<div class="stitle">🔤 আরবি হরফ ২৮টি <span class="bdg">আলিফ → ইয়া</span></div>
-<p style="color:var(--td);font-size:.8rem;margin-bottom:12px;">অক্ষরে ক্লিক করুন বিস্তারিত দেখতে ও শুনতে। ✓ = শেখা হয়েছে, ★ = পছন্দের তালিকায়।</p>
-<div class="dpanel" id="dpanel">
-<div class="dmain">
-<div class="dbig" id="dlet">ا</div>
-<div class="dinfo">
-<h2 id="dname"></h2><p id="ddesc"></p>
-<button class="sbtn" id="sbtn">🔊 শুনুন</button>
-<button class="lbtn" id="lbtn">✅ শিখেছি</button>
-<button class="fbtn" id="fbtn">★ পছন্দ</button>
-</div>
-</div>
-<div class="fgrid" id="dforms"></div>
-</div>
-<div class="agrid" id="agrid"></div>
-</div>
+        <div class="sec on" id="s-al">
+            <div class="stitle">🔤 আরবি হরফ ২৮টি <span class="bdg">আলিফ → ইয়া</span></div>
+            <p style="color:var(--td);font-size:.8rem;margin-bottom:12px;">অক্ষরে ক্লিক করুন বিস্তারিত দেখতে ও শুনতে। ✓
+                = শেখা হয়েছে, ★ = পছন্দের তালিকায়।</p>
+            <div class="dpanel" id="dpanel">
+                <div class="dmain">
+                    <div class="dbig" id="dlet">ا</div>
+                    <div class="dinfo">
+                        <h2 id="dname"></h2>
+                        <p id="ddesc"></p>
+                        <div class="dacts">
+                            <button class="sbtn" id="sbtn">🔊 শুনুন</button>
+                            <button class="lbtn" id="lbtn">✅ শিখেছি</button>
+                            <button class="fbtn" id="fbtn">★ পছন্দ</button>
+                        </div>
+                    </div>
+                    <button class="close-btn" id="dclose" title="বন্ধ করুন">✖</button>
+                </div>
+                <div class="fgrid" id="dforms"></div>
+            </div>
+            <div class="agrid" id="agrid"></div>
+        </div>
 
-<!-- FLASHCARD -->
+        <!-- FLASHCARD -->
 
-<div class="sec" id="s-fc">
-<div class="stitle">🔁 ফ্ল্যাশকার্ড (সোয়াইপ করতে পারেন)</div>
-<div class="fcmt">
-<button class="fcmb on" data-fcm="al">হরফ</button>
-<button class="fcmb" data-fcm="wo">শব্দ</button>
-<button class="fcmb" data-fcm="ha">হারাকাত</button>
-</div>
-<div class="fcc" id="fcc">১/২৮</div>
-<div class="fcwrap" id="fcwrap">
-<div class="fc" id="fc">
-<div class="fcf"><span class="fcar" id="ffa">ا</span><span class="fch">ক্লিক করুন উত্তর দেখতে</span></div>
-<div class="fcb"><span class="fcbn" id="fbb">আলিফ</span><span class="fcro" id="fbr">Alif</span><span class="fcde" id="fbd"></span></div>
-</div>
-</div>
-<div class="fcctr">
-<button class="fcn" data-fcn="-1">← আগে</button>
-<button class="fcn" id="fcspeak">🔊 শুনুন</button>
-<button class="fcn" id="fcshuffle">🔀 এলোমেলো</button>
-<button class="fcn" data-fcn="1">পরে →</button>
-</div>
-</div>
+        <div class="sec" id="s-fc">
+            <div class="stitle">🔁 ফ্ল্যাশকার্ড (সোয়াইপ করতে পারেন)</div>
+            <div class="fcmt">
+                <button class="fcmb on" data-fcm="al">হরফ</button>
+                <button class="fcmb" data-fcm="wo">শব্দ</button>
+                <button class="fcmb" data-fcm="ha">হারাকাত</button>
+            </div>
+            <div class="fcc" id="fcc">১/২৮</div>
+            <div class="fcwrap" id="fcwrap">
+                <div class="fc" id="fc">
+                    <div class="fcf"><span class="fcar" id="ffa">ا</span><span class="fch">ক্লিক করুন উত্তর দেখতে</span>
+                    </div>
+                    <div class="fcb"><span class="fcbn" id="fbb">আলিফ</span><span class="fcro" id="fbr">Alif</span><span
+                            class="fcde" id="fbd"></span></div>
+                </div>
+            </div>
+            <div class="fcctr">
+                <button class="fcn" data-fcn="-1">← আগে</button>
+                <button class="fcn" id="fcspeak">🔊 শুনুন</button>
+                <button class="fcn" id="fcshuffle">🔀 এলোমেলো</button>
+                <button class="fcn" data-fcn="1">পরে →</button>
+            </div>
+        </div>
 
-<!-- TRACING -->
+        <!-- TRACING -->
 
-<div class="sec" id="s-tr">
-<div class="stitle">✍️ অক্ষর লেখার অনুশীলন (ডটেড গাইডলাইন)</div>
-<div class="tctr">
-<div class="tnav">
-<button class="fcn" data-tnav="-1">← আগে</button>
-<span style="color:var(--gold);font-size:.86rem" id="tlbl">আলিফ (Alif)</span>
-<button class="fcn" data-tnav="1">পরে →</button>
-</div>
-<div class="tguide" id="tg">ا</div>
-<div class="tinfo">উপরের অক্ষর দেখে নিচে আঁকুন (ডটেড লাইন বরাবর)</div>
-<canvas id="tc" width="380" height="220"></canvas>
-<div class="cdots" id="cdots"></div>
-<div class="tctr2">
-<button class="btn btns" id="tclr">🗑️ মুছুন</button>
-<button class="btn btns" id="tundo">↩ পূর্বাবস্থা</button>
-<button class="btn btnp" id="tdone">✅ হয়েছে!</button>
-</div>
-</div>
-</div>
+        <div class="sec" id="s-tr">
+            <div class="stitle">✍️ অক্ষর লেখার অনুশীলন (ডটেড গাইডলাইন)</div>
+            <div class="tctr">
+                <div class="tnav">
+                    <button class="fcn" data-tnav="-1">← আগে</button>
+                    <span style="color:var(--gold);font-size:.86rem" id="tlbl">আলিফ (Alif)</span>
+                    <button class="fcn" data-tnav="1">পরে →</button>
+                </div>
+                <div class="tguide" id="tg">ا</div>
+                <div class="tinfo">উপরের অক্ষর দেখে নিচে আঁকুন (ডটেড লাইন বরাবর)</div>
+                <canvas id="tc" width="380" height="220"></canvas>
+                <div class="cdots" id="cdots"></div>
+                <div class="tctr2">
+                    <button class="btn btns" id="tclr">🗑️ মুছুন</button>
+                    <button class="btn btns" id="tundo">↩ পূর্বাবস্থা</button>
+                    <button class="btn btnp" id="tdone">✅ হয়েছে!</button>
+                </div>
+            </div>
+        </div>
 
-<!-- HARAKAT -->
+        <!-- HARAKAT -->
 
-<div class="sec" id="s-ha">
-<div class="stitle">🌟 হারাকাত — স্বরচিহ্ন</div>
-<p style="color:var(--td);font-size:.8rem;margin-bottom:12px;">ক্লিক করুন উচ্চারণ শুনতে।</p>
-<div class="hgrid" id="hgrid"></div>
-<div class="div"></div>
-<div class="stitle">📜 উদাহরণ</div>
-<div id="hex"></div>
-</div>
+        <div class="sec" id="s-ha">
+            <div class="stitle">🌟 হারাকাত — স্বরচিহ্ন</div>
+            <p style="color:var(--td);font-size:.8rem;margin-bottom:12px;">ক্লিক করুন উচ্চারণ শুনতে।</p>
+            <div class="hgrid" id="hgrid"></div>
+            <div class="div"></div>
+            <div class="stitle">📜 উদাহরণ</div>
+            <div id="hex"></div>
+        </div>
 
-<!-- WORDS -->
+        <!-- WORDS -->
 
-<div class="sec" id="s-wo">
-<div class="stitle">📖 কুরআনের শব্দ <span class="bdg">১০০+</span></div>
-<p style="color:var(--td);font-size:.8rem;margin-bottom:10px;">শব্দে ক্লিক করুন বা 🔊 চাপুন শুনতে। ★ চিহ্ন পছন্দের তালিকায় যুক্ত করে।</p>
-<div class="wfil">
-<button class="wb on" data-wfil="all">সব</button>
-<button class="wb" data-wfil="আল্লাহর নাম">আল্লাহর নাম</button>
-<button class="wb" data-wfil="ক্রিয়া">ক্রিয়া</button>
-<button class="wb" data-wfil="বিশেষ্য">বিশেষ্য</button>
-<button class="wb" data-wfil="বিশেষণ">বিশেষণ</button>
-<button class="wb" data-wfil="প্রিয়">★ পছন্দের</button>
-</div>
-<div class="wgrid" id="wgrid"></div>
-</div>
+        <div class="sec" id="s-wo">
+            <div class="stitle">📖 কুরআনের শব্দ <span class="bdg">১০০+</span></div>
+            <p style="color:var(--td);font-size:.8rem;margin-bottom:10px;">শব্দে ক্লিক করুন বা 🔊 চাপুন শুনতে। ★ চিহ্ন
+                পছন্দের তালিকায় যুক্ত করে।</p>
+            <div class="wfil">
+                <button class="wb on" data-wfil="all">সব</button>
+                <button class="wb" data-wfil="আল্লাহর নাম">আল্লাহর নাম</button>
+                <button class="wb" data-wfil="ক্রিয়া">ক্রিয়া</button>
+                <button class="wb" data-wfil="বিশেষ্য">বিশেষ্য</button>
+                <button class="wb" data-wfil="বিশেষণ">বিশেষণ</button>
+                <button class="wb" data-wfil="প্রিয়">★ পছন্দের</button>
+            </div>
+            <div class="wgrid" id="wgrid"></div>
+        </div>
 
-<!-- QUIZ -->
+        <!-- QUIZ -->
 
-<div class="sec" id="s-qu">
-<div class="qms">
-<button class="qmb on" data-qm="ln">হরফ → নাম</button>
-<button class="qmb" data-qm="nl">নাম → হরফ</button>
-<button class="qmb" data-qm="wm">শব্দ → অর্থ</button>
-</div>
-<div class="qst">
-<div class="stb"><div class="stn" id="qsc">0</div><div class="stl">সঠিক</div></div>
-<div class="stb"><div class="stn" id="qtl">0</div><div class="stl">মোট</div></div>
-<div class="stb"><div class="stn" id="qsk">0</div><div class="stl">ধারা</div></div>
-</div>
-<div class="qctr">
-<div class="qq"><span class="qar" id="qar">ا</span><div class="qpr" id="qpr">এই অক্ষরটির নাম কী?</div></div>
-<div class="qfb" id="qfb"></div>
-<div class="qop" id="qop"></div>
-<div style="text-align:center">
-<button class="btn btnp" id="nxtb" style="display:none">পরের প্রশ্ন →</button>
-<button class="btn btns" id="newqb" style="margin-left:8px">নতুন শুরু</button>
-</div>
-</div>
-</div>
+        <div class="sec" id="s-qu">
+            <div class="qms">
+                <button class="qmb on" data-qm="ln">হরফ → নাম</button>
+                <button class="qmb" data-qm="nl">নাম → হরফ</button>
+                <button class="qmb" data-qm="wm">শব্দ → অর্থ</button>
+            </div>
+            <div class="qst">
+                <div class="stb">
+                    <div class="stn" id="qsc">0</div>
+                    <div class="stl">সঠিক</div>
+                </div>
+                <div class="stb">
+                    <div class="stn" id="qtl">0</div>
+                    <div class="stl">মোট</div>
+                </div>
+                <div class="stb">
+                    <div class="stn" id="qsk">0</div>
+                    <div class="stl">ধারা</div>
+                </div>
+            </div>
+            <div class="qctr">
+                <div class="qq"><span class="qar" id="qar">ا</span>
+                    <div class="qpr" id="qpr">এই অক্ষরটির নাম কী?</div>
+                </div>
+                <div class="qfb" id="qfb"></div>
+                <div class="qop" id="qop"></div>
+                <div style="text-align:center">
+                    <button class="btn btnp" id="nxtb" style="display:none">পরের প্রশ্ন →</button>
+                    <button class="btn btns" id="newqb" style="margin-left:8px">নতুন শুরু</button>
+                </div>
+            </div>
+        </div>
 
-<!-- TAJWEED -->
+        <!-- TAJWEED -->
 
-<div class="sec" id="s-tj">
-<div class="stitle">🔗 তাজবিদের মূল নিয়মাবলী</div>
-<p style="color:var(--td);font-size:.8rem;margin-bottom:12px;">উদাহরণে ক্লিক করুন শুনতে।</p>
-<div class="tjgrid" id="tjgrid"></div>
-</div>
+        <div class="sec" id="s-tj">
+            <div class="stitle">🔗 তাজবিদের মূল নিয়মাবলী</div>
+            <p style="color:var(--td);font-size:.8rem;margin-bottom:12px;">উদাহরণে ক্লিক করুন শুনতে।</p>
+            <div class="tjgrid" id="tjgrid"></div>
+        </div>
 
-<!-- DUAS -->
+        <!-- DUAS -->
 
-<div class="sec" id="s-du">
-<div class="stitle">🕌 প্রতিদিনের দু'আ (★ পছন্দ)</div>
-<p style="color:var(--td);font-size:.8rem;margin-bottom:12px;">🔊 চাপলে উচ্চারণ শুনবেন।</p>
-<div class="duagrid" id="duagrid"></div>
-</div>
+        <div class="sec" id="s-du">
+            <div class="stitle">🕌 প্রতিদিনের দু'আ (★ পছন্দ)</div>
+            <p style="color:var(--td);font-size:.8rem;margin-bottom:12px;">🔊 চাপলে উচ্চারণ শুনবেন।</p>
+            <div class="duagrid" id="duagrid"></div>
+        </div>
 
-<!-- SURAHS -->
+        <!-- SURAHS -->
 
-<div class="sec" id="s-su">
-<div class="stitle">📜 ছোট সূরা সমূহ</div>
-<div class="stabs">
-<button class="stab on" data-ss="0">সূরা ফাতিহা</button>
-<button class="stab" data-ss="1">সূরা ইখলাস</button>
-<button class="stab" data-ss="2">সূরা ফালাক্ব</button>
-<button class="stab" data-ss="3">সূরা নাস</button>
-</div>
-<button class="sspk" id="sspk">🔊 পুরো সূরা শুনুন</button>
-<div class="sdsp" id="sdsp"></div>
-</div>
+        <div class="sec" id="s-su">
+            <div class="stitle">📜 ছোট সূরা সমূহ</div>
+            <div class="stabs">
+                <button class="stab on" data-ss="0">সূরা ফাতিহা</button>
+                <button class="stab" data-ss="1">সূরা ইখলাস</button>
+                <button class="stab" data-ss="2">সূরা ফালাক্ব</button>
+                <button class="stab" data-ss="3">সূরা নাস</button>
+            </div>
+            <button class="sspk" id="sspk">🔊 পুরো সূরা শুনুন</button>
+            <div class="sdsp" id="sdsp"></div>
+        </div>
 
-<!-- PROGRESS & ACHIEVEMENTS -->
+        <!-- PROGRESS & ACHIEVEMENTS -->
 
-<div class="sec" id="s-pr">
-<div class="stitle">📊 আপনার অগ্রগতি ও অর্জন</div>
-<div class="psec">
-<div class="pcard"><h3>🔤 হরফ শেখা</h3>
-<div class="pring"><div class="rw"><svg width="70" height="70" viewBox="0 0 70 70"><circle class="rbg" cx="35" cy="35" r="30"/><circle class="rfl" id="rL" cx="35" cy="35" r="30" stroke="var(--gold)" stroke-dasharray="188.4" stroke-dashoffset="188.4"/></svg><div class="rxt" id="rLp">0%</div></div><div class="pd" id="Ld">০/২৮ হরফ</div></div></div>
-<div class="pcard"><h3>🧠 কুইজ পারফরম্যান্স</h3>
-<div class="pring"><div class="rw"><svg width="70" height="70" viewBox="0 0 70 70"><circle class="rbg" cx="35" cy="35" r="30"/><circle class="rfl" id="rQ" cx="35" cy="35" r="30" stroke="var(--teal)" stroke-dasharray="188.4" stroke-dashoffset="188.4"/></svg><div class="rxt" id="rQp">0%</div></div><div class="pd" id="Qd">কোনো পরীক্ষা হয়নি</div></div></div>
-<div class="pcard"><h3>🔥 ধারাবাহিক দিন</h3>
-<div class="strkd"><div class="strk">🔥</div><div class="strki"><h4 id="stc">0</h4><p>দিনের ধারা</p><p id="bst" style="font-size:.7rem;color:var(--gold)">সর্বোচ্চ: 0</p></div></div></div>
-<div class="pcard"><h3>⭐ মোট XP</h3>
-<div style="font-size:2.4rem;font-weight:700;color:var(--gold)" id="txp">0</div>
-<div style="font-size:.76rem;color:var(--td);margin-top:5px" id="xlv">মক্তব শিক্ষার্থী</div>
-<div class="goal-progress"><div class="goal-fill" id="goalFill" style="width:0%"></div></div>
-<div style="font-size:.7rem;color:var(--td)" id="goalText">আজকের লক্ষ্য: 0/10 XP</div>
-</div>
-</div>
-<div class="stitle">🏆 অর্জনসমূহ</div>
-<div class="achieve-grid" id="achieveGrid"></div>
-<div style="display:flex; justify-content:space-between; margin-top:10px;">
-<button class="btn btns" onclick="shareProgress()" style="font-size:.7rem">📤 শেয়ার অগ্রগতি</button>
-<button class="btn btns" onclick="resetP()" style="font-size:.7rem">↩ অগ্রগতি রিসেট</button>
-</div>
-<div class="hmap" id="hmap" style="margin-top:14px;"></div>
-</div>
+        <div class="sec" id="s-pr">
+            <div class="stitle">📊 আপনার অগ্রগতি ও অর্জন</div>
+            <div class="psec">
+                <div class="pcard">
+                    <h3>🔤 হরফ শেখা</h3>
+                    <div class="pring">
+                        <div class="rw"><svg width="70" height="70" viewBox="0 0 70 70">
+                                <circle class="rbg" cx="35" cy="35" r="30" />
+                                <circle class="rfl" id="rL" cx="35" cy="35" r="30" stroke="var(--gold)"
+                                    stroke-dasharray="188.4" stroke-dashoffset="188.4" />
+                            </svg>
+                            <div class="rxt" id="rLp">0%</div>
+                        </div>
+                        <div class="pd" id="Ld">০/২৮ হরফ</div>
+                    </div>
+                </div>
+                <div class="pcard">
+                    <h3>🧠 কুইজ পারফরম্যান্স</h3>
+                    <div class="pring">
+                        <div class="rw"><svg width="70" height="70" viewBox="0 0 70 70">
+                                <circle class="rbg" cx="35" cy="35" r="30" />
+                                <circle class="rfl" id="rQ" cx="35" cy="35" r="30" stroke="var(--teal)"
+                                    stroke-dasharray="188.4" stroke-dashoffset="188.4" />
+                            </svg>
+                            <div class="rxt" id="rQp">0%</div>
+                        </div>
+                        <div class="pd" id="Qd">কোনো পরীক্ষা হয়নি</div>
+                    </div>
+                </div>
+                <div class="pcard">
+                    <h3>🔥 ধারাবাহিক দিন</h3>
+                    <div class="strkd">
+                        <div class="strk">🔥</div>
+                        <div class="strki">
+                            <h4 id="stc">0</h4>
+                            <p>দিনের ধারা</p>
+                            <p id="bst" style="font-size:.7rem;color:var(--gold)">সর্বোচ্চ: 0</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="pcard">
+                    <h3>⭐ মোট XP</h3>
+                    <div style="font-size:2.4rem;font-weight:700;color:var(--gold)" id="txp">0</div>
+                    <div style="font-size:.76rem;color:var(--td);margin-top:5px" id="xlv">মক্তব শিক্ষার্থী</div>
+                    <div class="goal-progress">
+                        <div class="goal-fill" id="goalFill" style="width:0%"></div>
+                    </div>
+                    <div style="font-size:.7rem;color:var(--td)" id="goalText">আজকের লক্ষ্য: 0/10 XP</div>
+                </div>
+            </div>
+            <div class="stitle">🏆 অর্জনসমূহ</div>
+            <div class="achieve-grid" id="achieveGrid"></div>
+            <div style="display:flex; justify-content:space-between; margin-top:10px;">
+                <button class="btn btns" onclick="shareProgress()" style="font-size:.7rem">📤 শেয়ার অগ্রগতি</button>
+                <button class="btn btns" onclick="resetP()" style="font-size:.7rem">↩ অগ্রগতি রিসেট</button>
+            </div>
+            <div class="hmap" id="hmap" style="margin-top:14px;"></div>
+        </div>
 
-<!-- TIPS -->
+        <!-- TIPS -->
 
-<div class="sec" id="s-ti">
-<div class="stitle">💡 কুরআন শেখার পরামর্শ</div>
-<div class="tipgrid" id="tipgrid"></div>
-<div class="div"></div>
-<div class="qv">
-<div style="font-family:'Amiri',serif;font-size:1.8rem;direction:rtl;color:var(--gl);line-height:2.5">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ ۝ الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ ۝ الرَّحْمَٰنِ الرَّحِيمِ ۝ مَالِكِ يَوْمِ الدِّينِ</div>
-<div style="font-size:.8rem;color:var(--td);margin-top:10px;line-height:1.8">আল্লাহর নামে যিনি পরম দয়ালু। সকল প্রশংসা আল্লাহর, সকল জগতের প্রতিপালক। পরম দয়ালু, করুণাময়। বিচার দিনের মালিক।</div>
-<div class="vref">সূরা আল-ফাতিহা (১:১-৪)</div>
-</div>
-</div>
+        <div class="sec" id="s-ti">
+            <div class="stitle">💡 কুরআন শেখার পরামর্শ</div>
+            <div class="tipgrid" id="tipgrid"></div>
+            <div class="div"></div>
+            <div class="qv">
+                <div style="font-family:'Amiri',serif;font-size:1.8rem;direction:rtl;color:var(--gl);line-height:2.5">
+                    بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ ۝ الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ ۝ الرَّحْمَٰنِ
+                    الرَّحِيمِ ۝ مَالِكِ يَوْمِ الدِّينِ</div>
+                <div style="font-size:.8rem;color:var(--td);margin-top:10px;line-height:1.8">আল্লাহর নামে যিনি পরম
+                    দয়ালু। সকল প্রশংসা আল্লাহর, সকল জগতের প্রতিপালক। পরম দয়ালু, করুণাময়। বিচার দিনের মালিক।</div>
+                <div class="vref">সূরা আল-ফাতিহা (১:১-৪)</div>
+            </div>
+        </div>
 
-</div>
-<script type="module" src="js/app.js"></script>
+    </div>
+    <script type="module" src="js/app.js"></script>
 </body>
+
 </html>
